@@ -1,3 +1,4 @@
+# 풀이방법 DP
 import sys
 input = sys.stdin.readline
 
@@ -19,3 +20,23 @@ if DP[N] >= INF:
     print(-1)
 else:
     print(DP[N])
+
+# -------------------------------------
+# 풀이방법 2 Greedy
+import sys
+input = sys.stdin.readline
+
+N = int(input())
+
+cnt = 0
+
+while N >= 0:
+    if N % 5 == 0:
+        cnt += (N//5)
+        print(cnt)
+        exit()
+    
+    N -=3
+    cnt += 1
+
+print(-1)
