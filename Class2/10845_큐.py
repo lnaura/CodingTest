@@ -11,7 +11,7 @@ for _ in range(N):
     if command[0] == "push":
         queue.append(int(command[1]))
     
-    if command[0] == "pop":
+    elif command[0] == "pop":
         if queue:
             print(queue.popleft())
         else:
