@@ -13,7 +13,5 @@ for _ in range(n):
             print(b)
         else:
             print(0)
-    elif x > 0 :
-        heapq.heappush(heap,(x,x))
     else:
-        heapq.heappush(heap,(-x,x))
+        heapq.heappush(heap,(abs(x),x))
