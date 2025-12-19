@@ -47,43 +47,46 @@ import sys
 from collections import deque
 input = sys.stdin.readline
 
-m,n,h = map(int,input().split())
-graph = []
-queue = deque()
-unripe_tomatoes = 0
+def solve():
+    m,n,h = map(int,input().split())
+    graph = []
+    queue = deque()
+    unripe_tomatoes = 0
 
-for z in range(h):
-    layer = []
-    for y in range(n):
-        row = list(map(int,input().split()))
-        for x in range(m):
-            if row[x] == 1:
-                queue.append((x,y,z,0))
-            elif row[x] == 0:
-                unripe_tomatoes += 1
-        layer.append(row)
-    graph.append(layer)
+    for z in range(h):
+        layer = []
+        for y in range(n):
+            row = list(map(int,input().split()))
+            for x in range(m):
+                if row[x] == 1:
+                    queue.append((x,y,z,0))
+                elif row[x] == 0:
+                    unripe_tomatoes += 1
+            layer.append(row)
+        graph.append(layer)
 
-if unripe_tomatoes == 0:
-    print(0)
-    exit()
+    if unripe_tomatoes == 0:
+        print(0)
+        return
 
-dx = [1,-1,0,0,0,0]
-dy = [0,0,1,-1,0,0]
-dz = [0,0,0,0,1,-1]
+    dx = [1,-1,0,0,0,0]
+    dy = [0,0,1,-1,0,0]
+    dz = [0,0,0,0,1,-1]
 
-last_day = 0
-while queue:
-    cx,cy,cz, days = queue.popleft()
-    last_day = days
+    last_day = 0
+    while queue:
+        cx,cy,cz, days = queue.popleft()
+        last_day = days
 
-    for i in range(6):
-        nx,ny,nz = cx+dx[i],cy+dy[i],cz+dz[i]
+        for i in range(6):
+            nx,ny,nz = cx+dx[i],cy+dy[i],cz+dz[i]
 
-        if 0 <= nx < m and 0 <= ny < n and 0 <= nz < h:
-            if graph[nz][ny][nx] == 0:
-                graph[nz][ny][nx] = 1
-                unripe_tomatoes -= 1
-                queue.append((nx,ny,nz,days+1))
+            if 0 <= nx < m and 0 <= ny < n and 0 <= nz < h:
+                if graph[nz][ny][nx] == 0:
+                    graph[nz][ny][nx] = 1
+                    unripe_tomatoes -= 1
+                    queue.append((nx,ny,nz,days+1))
             
-print(last_day if unripe_tomatoes == 0 else -1)
+    print(last_day if unripe_tomatoes == 0 else -1)
+
+solve()
