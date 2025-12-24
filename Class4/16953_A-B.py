@@ -26,4 +26,24 @@ def bfs(start,target,cnt):
     return
         
 bfs(a,b,1)
+#---------------------------------------
+# Greedy 풀이
+import sys
+input = sys.stdin.readline
+
+a, b = map(int,input().split())
+count = 1
+
+while True:
+    if b == a:
+        print(count)
+        break
+    if (b % 2 != 0 and b % 10 != 1) or (b < a):
+        print(-1)
+        break
+    if b % 10 == 1:
+        b //= 10
+    elif b % 2 == 0:
+        b //= 2
         
+    count += 1
