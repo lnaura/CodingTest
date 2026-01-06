@@ -8,10 +8,14 @@ def bfs(start):
     queue = deque()
     queue.append((start,0))
     visited = [-1] * 100001
+    visited[start] = 0
     cnt = 0
     min_sec = sys.maxsize
     while queue:
         current, sec = queue.popleft()
+        
+        if min_sec < sec:
+            break
         
         if goal == current:
             if sec <= min_sec:
