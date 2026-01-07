@@ -2,7 +2,7 @@ import sys
 input = sys.stdin.readline
 from collections import deque
 from itertools import combinations
-import copy
+#import copy
 
 n, m = map(int,input().split())
 graph = [list(map(int,input().split())) for _ in range(n)]
@@ -44,7 +44,8 @@ max_cnt = 0
 
 # 빈칸 중 3개 뽑아서 벽세우기
 for combo in combinations(empty,3):
-    temp_graph = copy.deepcopy(graph)
+    #temp_graph = copy.deepcopy(graph)
+    temp_graph = [row[:] for row in graph]
 
     for i, j in combo:
         temp_graph[i][j] = 1
