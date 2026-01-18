@@ -28,4 +28,3 @@ for _ in range(m):
         output("1\n")
     else:
         output("0\n")
-    
