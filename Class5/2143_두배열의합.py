@@ -74,3 +74,5 @@ result = 0
 for s_a in count_a:
     target_b = t - s_a
     result += count_a[s_a] * count_b[target_b]
+
+print(result)
