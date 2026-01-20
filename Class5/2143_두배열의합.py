@@ -37,3 +37,40 @@ for s_a in sum_a:
         result += sum_a[s_a] * sum_b[target_b]
 
 print(result)
+
+#---------------------------------------------------
+# Counter 이용
+import sys
+from collections import Counter
+
+input = sys.stdin.readline
+
+t = int(input())
+
+n = int(input())
+a = list(map(int,input().split()))
+
+m = int(input())
+b = list(map(int,input().split()))
+
+sum_a = []
+for i in range(n):
+    current_sum = 0
+    for j in range(i, n):
+        current_sum += a[j]
+        sum_a.append(current_sum)
+
+sum_b = []
+for i in range(m):
+    current_sum = 0
+    for j in range(i, m):
+        current_sum += b[j]
+        sum_b.append(current_sum)
+        
+count_a = Counter(sum_a)
+count_b = Counter(sum_b)
+
+result = 0
+for s_a in count_a:
+    target_b = t - s_a
+    result += count_a[s_a] * count_b[target_b]
