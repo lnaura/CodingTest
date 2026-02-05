@@ -23,3 +23,25 @@ def solution(progresses, speeds):
         answer.append(cnt)
     
     return answer
+
+#----------------------------------------
+import math
+
+def solution(progresses, speeds):
+    max_curr_day = math.ceil((100 - progresses[0]) / speeds[0])
+    
+    answer = []
+    count = 0
+    for p, s in zip(progresses, speeds):
+        day = math.ceil((100 - p) / s)
+        
+        if day > max_curr_day:
+            answer.append(count)
+            count = 1
+            max_curr_day = day
+        else:
+            count += 1
+    
+    answer.append(count)
+    
+    return answer
